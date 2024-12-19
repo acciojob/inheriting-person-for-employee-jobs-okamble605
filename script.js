@@ -29,3 +29,11 @@ class Employee extends Person {
 // Do not change code below this line
 window.Person = Person;
 window.Employee = Employee;
+
+const alice = new Person("Alice", 25);
+alice.greet(); // Output: Hello, my name is Alice, I am 25 years old.
+
+const bob = new Employee("Bob", 30, "Manager");
+bob.greet(); // Output: Hello, my name is Bob, I am 30 years old.
+bob.jobGreet(); // Output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
+
