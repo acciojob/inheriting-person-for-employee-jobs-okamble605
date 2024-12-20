@@ -1,14 +1,70 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Person and Employee Classes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Person and Employee Classes</title>
 </head>
-
 <body>
-    <script type="text/javascript">
-       
-    </script>
-</body>
+  <script>
+    // Define the Person class
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
 
+      // Method to greet the person
+      greet() {
+        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+      }
+    }
+
+    // Define the Employee class that extends Person
+    class Employee extends Person {
+      constructor(name, age, jobTitle) {
+        super(name, age); // Call the constructor of the Person class
+        this.jobTitle = jobTitle;
+      }
+
+      // Method to greet the employee along with their job title
+      jobGreet() {
+        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+      }
+    }
+
+    // Cypress test simulation
+
+    // Add a method to run tests manually in the browser console
+    function runTests() {
+      // Simulate Cypress's cy.spy() and cy.stub() behavior
+
+      // Test for Person class
+      console.log("Running Person class test...");
+      const person = new Person("Alice", 25);
+      const originalLog = console.log;
+      console.log = function(message) {
+        if (message === 'Hello, my name is Alice, I am 25 years old.') {
+          console.log("Person test passed!");
+        }
+      };
+      person.greet();
+      console.log = originalLog; // Restore console.log
+
+      // Test for Employee class
+      console.log("Running Employee class test...");
+      const employee = new Employee("Bob", 30, "Manager");
+      console.log = function(message) {
+        if (message === 'Hello, my name is Bob, I am 30 years old, and my job title is Manager.') {
+          console.log("Employee test passed!");
+        }
+      };
+      employee.jobGreet();
+      console.log = originalLog; // Restore console.log
+    }
+
+    // Run tests manually by calling runTests()
+    runTests();
+  </script>
+</body>
 </html>
