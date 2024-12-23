@@ -29,41 +29,49 @@
 
       // Method to greet the employee along with their job title
       jobGreet() {
-        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+        console.log(
+          `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
+        );
       }
     }
 
-    // Cypress test simulation
-
-    // Add a method to run tests manually in the browser console
+    // Test Cases
     function runTests() {
-      // Simulate Cypress's cy.spy() and cy.stub() behavior
-
-      // Test for Person class
-      console.log("Running Person class test...");
+      console.log("Testing Person class...");
       const person = new Person("Alice", 25);
       const originalLog = console.log;
-      console.log = function(message) {
+
+      // Test greet method of Person
+      console.log = (message) => {
         if (message === 'Hello, my name is Alice, I am 25 years old.') {
-          console.log("Person test passed!");
+          originalLog("Person class test passed!");
+        } else {
+          originalLog("Person class test failed!");
         }
       };
       person.greet();
-      console.log = originalLog; // Restore console.log
 
-      // Test for Employee class
-      console.log("Running Employee class test...");
+      console.log("Testing Employee class...");
       const employee = new Employee("Bob", 30, "Manager");
-      console.log = function(message) {
-        if (message === 'Hello, my name is Bob, I am 30 years old, and my job title is Manager.') {
-          console.log("Employee test passed!");
+
+      // Test jobGreet method of Employee
+      console.log = (message) => {
+        if (
+          message ===
+          'Hello, my name is Bob, I am 30 years old, and my job title is Manager.'
+        ) {
+          originalLog("Employee class test passed!");
+        } else {
+          originalLog("Employee class test failed!");
         }
       };
       employee.jobGreet();
-      console.log = originalLog; // Restore console.log
+
+      // Restore original console.log
+      console.log = originalLog;
     }
 
-    // Run tests manually by calling runTests()
+    // Run Tests
     runTests();
   </script>
 </body>
