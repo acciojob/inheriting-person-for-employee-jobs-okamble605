@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Person and Employee Classes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance Example</title>
 </head>
 <body>
-  <h1>Person and Employee Classes</h1>
-  <p>Open the browser console to manually test the classes.</p>
-  <script>
-    // Define the Person class
-    class Person {
-      constructor(name, age) {
-        this.name = name;
-        this.age = age;
-      }
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
 
-      // Method to greet the person
-      greet() {
-        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-      }
-    }
+            greet() {
+                console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+            }
+        }
 
-    // Define the Employee class that extends Person
-    class Employee extends Person {
-      constructor(name, age, jobTitle) {
-        super(name, age); // Call the constructor of the Person class
-        this.jobTitle = jobTitle;
-      }
+        class Employee extends Person {
+            constructor(name, age, jobTitle) {
+                super(name, age);
+                this.jobTitle = jobTitle;
+            }
 
-      // Method to greet the employee along with their job title
-      jobGreet() {
-        console.log(
-          `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
-        );
-      }
-    }
+            jobGreet() {
+                console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+            }
+        }
 
-    // Instructions for manual testing
-    console.log("Manual Testing Instructions:");
-    console.log("1. Create a Person object: const person = new Person('Alice', 25);");
-    console.log("2. Call the greet method: person.greet();");
-    console.log("3. Create an Employee object: const employee = new Employee('Bob', 30, 'Manager');");
-    console.log("4. Call the jobGreet method: employee.jobGreet();");
-    console.log("Try it out in the browser console!");
-  </script>
+        // Example Test Case
+        const person = new Person("Alice", 25);
+        person.greet(); // Expected output: Hello, my name is Alice, I am 25 years old.
+
+        const employee = new Employee("Bob", 30, "Manager");
+        employee.jobGreet(); // Expected output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
+    </script>
 </body>
 </html>
